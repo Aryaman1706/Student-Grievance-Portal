@@ -37,14 +37,20 @@
         </div>
       </nav>
 
+      <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red waves-effect hoverable">
+          <i class="large material-icons">add</i>
+        </a>
+      </div>
+
 <div class="container">
     <br><br>
     <div class="row">
         <div class="col s12">
           <div class="card red lighten-2">
             <div class="card-content white-text">
-              <span class="card-title">Academics</span>
-              <p>Ban 8 AM classes.</p>
+              <span class="card-title" id="category">Academics</span>
+              <p id="subject">Ban 8 AM classes.</p>
             </div>
             <div class="card-action">
                 <a class="modal-trigger white-text" href="#modal1">Read More...</a>
@@ -56,8 +62,8 @@
         <div id="modal1" class="modal">
             <div class="modal-content">
             <i class=" modal-close material-icons right">clear</i> 
-            <h4>Academics</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste culpa eveniet tempora sequi velit asperiores 
+            <h4 id="category">Academics</h4>
+              <p id="statement">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste culpa eveniet tempora sequi velit asperiores 
                   blanditiis libero dignissimos voluptas sint ad, accusamus officiis itaque minima, cumque molestias odio unde eum.</p>
             </div>
             <div class="modal-footer">
@@ -191,6 +197,12 @@
     $('.button-collapse').sideNav();
   });
 </script>
+<script>  $(document).ready(function(){
+  $('.fixed-action-btn').floatingActionButton();
+});</script>
+<!-- <script src="rest.js"></script>
+<script src="UI.js"></script>
+<script src="app.js"></script> -->
 
   </body>
 </html>
