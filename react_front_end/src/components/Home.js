@@ -47,7 +47,8 @@ render(){
           </div>
             </div>
         )
-    })):(
+    })):( 
+        <div className="center">
         <div class="preloader-wrapper active">
         <div class="spinner-layer spinner-red-only">
           <div class="circle-clipper left">
@@ -58,6 +59,7 @@ render(){
             <div class="circle"></div>
           </div>
         </div>
+      </div>
       </div>
     )
     return(
