@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+  </head>
+  <title>Add Issue</title>
+
+  <body>
+    <div class="input-field col s12">
+        <select>
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <label>Materialize Select</label>
+      </div>
+    
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script>
+  $(document).ready(function(){
+    // Init Carousel
+    $('.carousel').carousel();
+
+    // Init Carousel Slider
+    $('.carousel.carousel-slider').carousel({fullWidth:true});
+
+    // Fire off toast
+    //Materialize.toast('Hello World', 3000);
+
+    // Init Slider
+    $('.slider').slider();
+
+    // Init Modal
+    $('.modal').modal();
+
+    // Init Sidenav
+    $('.button-collapse').sideNav();
+
+    $('select').not('.disabled').formSelect();
+
+    $('.fixed-action-btn').floatingActionButton();
+  });
+</script>
+<!-- <script src="rest.js"></script>
+<script src="UI.js"></script>
+<script src="app.js"></script> -->
+
+  </body>
+</html>
