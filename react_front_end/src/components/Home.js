@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import axios from 'axios';
+import Popup from "reactjs-popup";
 
 class Home extends Component{
     state={
@@ -27,25 +28,26 @@ render(){
                   <p>{post.body}</p>
                 </div>
                 <div class="card-action">
-                    <a class="modal-trigger white-text" href="#modal1">Read More...</a>
+                   <Popup modal trigger={<a className="pointer">Read more...</a>}>
+                   {close=>(
+                        <div><a onClick={close}><i class=" modal-close material-icons right pointer" >clear </i></a> 
+                        <h4 id="category">Academics</h4>
+                          <p id="statement">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste culpa eveniet tempora sequi velit asperiores 
+                              blanditiis libero dignissimos voluptas sint ad, accusamus officiis itaque minima, cumque molestias odio unde eum.</p>
+                       
+                        <div class="modal-footer">
+                          <a href="#!" class="modal-close btn-flat green right">Upvote<i class="material-icons right">arrow_upward</i></a>
+                          <a href="#!" class="modal-close btn-flat red right">Downvote<i class="material-icons right">arrow_downward</i></a>
+                        </div>
+                        </div>
+                        )}
+                   </Popup>
                     
                 </div>
               </div>
             </div>
-            {/*Modal*/}
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-            <i class=" modal-close material-icons right">clear</i> 
-            <h4 id="category">Academics</h4>
-              <p id="statement">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste culpa eveniet tempora sequi velit asperiores 
-                  blanditiis libero dignissimos voluptas sint ad, accusamus officiis itaque minima, cumque molestias odio unde eum.</p>
             </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-close btn-flat green">Upvote<i class="material-icons right">arrow_upward</i></a>
-              <a href="#!" class="modal-close btn-flat red">Downvote<i class="material-icons right">arrow_downward</i></a>
-            </div>
-          </div>
-            </div>
+           
         )
     })):( 
         <div className="center">
