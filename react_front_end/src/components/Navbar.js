@@ -15,9 +15,13 @@ return(
       </ul>
       <ul id="filter" className="dropdown-content">
         <li><a href="#!">Academics</a></li>
-        <li><a href="#!">Infrastructure</a></li>
+        <li><a href="#!">Infra</a></li>
         <li><a href="#!">Services</a></li>
         <li><a href="#!">Others</a></li>
+      </ul>
+      <ul id="profile" className="dropdown-content">
+        <li><Link to='/profile'>Profile</Link></li>
+        <li><a href="#!">Sign Out</a></li>
       </ul>
       </div>
   <div className="nav-wrapper #000000 black">
@@ -26,7 +30,7 @@ return(
     </Link>
     <ul id="nav-mobile" className="right hide-on-med-and-down">
       <li>
-        <a href="#" className="tooltipped" data-position="bottom" data-tooltip="Profile">
+        <a href="#" className="dropdown-button" data-position="bottom" data-tooltip="Profile" data-activates="profile">
           <i className="material-icons">account_circle</i>
         </a>
       </li>

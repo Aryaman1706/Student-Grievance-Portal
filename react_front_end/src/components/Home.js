@@ -20,24 +20,24 @@ render(){
     const { posts}=this.state;
     const postList= posts.length?(posts.map(post=>{
         return(
-            <div class="row">
-            <div class="col s12">
-              <div class="card #f4511e deep-orange darken-1">
-                <div class="card-content white-text">
-                  <span class="card-title">{post.title}</span>
+            <div className="row">
+            <div className="col s12">
+              <div className="card #f4511e deep-orange darken-1">
+                <div className="card-content white-text">
+                  <span className="card-title">{post.title}</span>
                   <p>{post.body}</p>
                 </div>
-                <div class="card-action">
+                <div className="card-action">
                    <Popup modal trigger={<a className="pointer">Read more...</a>}>
                    {close=>(
-                        <div><a onClick={close}><i class=" modal-close material-icons right pointer" >clear </i></a> 
+                        <div><a onClick={close}><i className=" modal-close material-icons right pointer" >clear </i></a> 
                         <h4 id="category">Academics</h4>
                           <p id="statement">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste culpa eveniet tempora sequi velit asperiores 
                               blanditiis libero dignissimos voluptas sint ad, accusamus officiis itaque minima, cumque molestias odio unde eum.</p>
                        
-                        <div class="modal-footer">
-                          <a href="#!" class="modal-close btn-flat green right">Upvote<i class="material-icons right">arrow_upward</i></a>
-                          <a href="#!" class="modal-close btn-flat red right">Downvote<i class="material-icons right">arrow_downward</i></a>
+                        <div className="modal-footer">
+                          <a href="#!" className="modal-close btn-flat green right">Upvote<i className="material-icons right">arrow_upward</i></a>
+                          <a href="#!" className="modal-close btn-flat red right">Downvote<i className="material-icons right">arrow_downward</i></a>
                         </div>
                         </div>
                         )}
@@ -51,27 +51,27 @@ render(){
         )
     })):( 
         <div className="center">
-        <div class="preloader-wrapper active">
-        <div class="spinner-layer spinner-red-only">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div><div class="gap-patch">
-            <div class="circle"></div>
-          </div><div class="circle-clipper right">
-            <div class="circle"></div>
+        <div className="preloader-wrapper active">
+        <div className="spinner-layer spinner-red-only">
+          <div className="circle-clipper left">
+            <div className="circle"></div>
+          </div><div className="gap-patch">
+            <div className="circle"></div>
+          </div><div className="circle-clipper right">
+            <div className="circle"></div>
           </div>
         </div>
       </div>
       </div>
     )
     return(
-        <div class="container">
+        <div className="container">
         <br/>
         <br/>
         {postList}
-        <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red waves-effect hoverable">
-          <i class="large material-icons">add</i>
+        <div className="fixed-action-btn">
+        <a className="btn-floating btn-large red waves-effect hoverable">
+          <i className="large material-icons">add</i>
         </a>
       </div>
             </div>
