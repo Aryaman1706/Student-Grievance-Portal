@@ -21,18 +21,16 @@ router.post('/',async(req,res)=>{
     const {error}= validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     
-    const user1=await User.findById(req.body.userId);
-    if(!user1) return res.status(400).send('Invalid User');
+    const user=await User.findById(req.body.userId);
+    if(!user) return res.status(400).send('Invalid User');
     let issue=new Issue({
         category: req.body.category,
         subject: req.body.subject,
         statement: req.body.statement,
         user:{
-            _id: user1._id,
-            username: user1.username,
-            email: user1.email,
-            phone: user1.phone,
-            password:user1.password
+            _id: user._id,
+            username: user.username,
+            // email: user.email
         }
     });
 
