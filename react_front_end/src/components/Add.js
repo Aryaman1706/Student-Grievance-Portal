@@ -50,7 +50,7 @@ class Add extends Component {
                 </div>
 
                 <br/>
-                <button type="submit" classNameName="btn btn-primary mb-2">Submit</button>
+                <button type="submit" className="btn btn-primary mb-2">Submit</button>
 
 
             </form>
