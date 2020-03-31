@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import axios from 'axios';
 import Popup from "reactjs-popup";
+import { Link } from 'react-router-dom';
 
 class Home extends Component{
     state={
@@ -70,9 +71,9 @@ render(){
         <br/>
         {postList}
         <div className="fixed-action-btn">
-        <a className="btn-floating btn-large red waves-effect hoverable">
+        <Link to='/add' className="btn-floating btn-large red waves-effect hoverable">
           <i className="large material-icons">add</i>
-        </a>
+        </Link>
       </div>
             </div>
             

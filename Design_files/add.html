@@ -1,59 +1,59 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!--fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Add Grievance</title>
   </head>
-  <title>Add Issue</title>
-
   <body>
-    <div class="input-field col s12">
-        <select>
-          <option value="" disabled selected>Choose your option</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </select>
-        <label>Materialize Select</label>
-      </div>
+
     
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-<script>
-  $(document).ready(function(){
-    // Init Carousel
-    $('.carousel').carousel();
+    <div class="container">
+      <h1 class="text-center">ADD GRIEVANCE</h1>
+      <br>
+      <form>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select class="form-control" id="category">
+            <option selected>Choose..</option>
+            <option>Academics</option>
+            <option>Infrastructure</option>
+            <option>Services</option>
+            <option>Other</option>
+          </select>
+        </div>
 
-    // Init Carousel Slider
-    $('.carousel.carousel-slider').carousel({fullWidth:true});
+        <div class="form-group">
+          <label for="subject">Subject:-</label>
+          <textarea class="form-control" id="subject" rows="3"></textarea>
+        </div>
 
-    // Fire off toast
-    //Materialize.toast('Hello World', 3000);
+        <div class="form-group">
+          <label for="statement">Brief Description:-</label>
+          <textarea class="form-control" id="statement" rows="3"></textarea>
+        </div>
 
-    // Init Slider
-    $('.slider').slider();
+        <div class="form-group">
+          <label for="files">Attach Files (optional):-</label>
+          <input type="file" class="form-control-file" id="files">
+        </div>
 
-    // Init Modal
-    $('.modal').modal();
+        <br>
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
 
-    // Init Sidenav
-    $('.button-collapse').sideNav();
 
-    $('select').not('.disabled').formSelect();
+      </form>
+    </div>
 
-    $('.fixed-action-btn').floatingActionButton();
-  });
-</script>
-<!-- <script src="rest.js"></script>
-<script src="UI.js"></script>
-<script src="app.js"></script> -->
-
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
