@@ -14,6 +14,11 @@ class Add extends Component {
     submit= (e) =>{
         e.preventDefault();
         console.log(this.state);
+        this.setState({
+            category: '',
+             subject: '',
+            statement: ''
+        })
     }
     render(){
      return (
@@ -25,7 +30,7 @@ class Add extends Component {
             <form onSubmit={this.submit}>
                 <div className="form-group">
                 <label htmlFor="category">Category</label>
-                <select className="form-control" id="category" onChange={this.changeState}>
+                <select className="form-control" id="category" onChange={this.changeState} value={this.state.category}>
                     <option selected>Choose..</option>
                     <option>Academics</option>
                     <option>Infrastructure</option>
@@ -36,12 +41,12 @@ class Add extends Component {
 
                 <div className="form-group">
                 <label htmlFor="subject">Subject:-</label>
-                <textarea className="form-control" id="subject" rows="3" onChange={this.changeState}></textarea>
+                <textarea className="form-control" id="subject" rows="3" onChange={this.changeState} value={this.state.subject}></textarea>
                 </div>
 
                 <div className="form-group">
                 <label htmlFor="statement">Brief Description:-</label>
-                <textarea className="form-control" id="statement" rows="3" onChange={this.changeState}></textarea>
+                <textarea className="form-control" id="statement" rows="3" onChange={this.changeState} value={this.state.statement}></textarea>
                 </div>
 
                 <div className="form-group">
