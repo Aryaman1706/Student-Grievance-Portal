@@ -1,3 +1,4 @@
+const helmet = require('helmet');
 const express=require('express');
 const mongoose=require('mongoose');
 
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost/proto')
 .catch(err=> console.error('Not Connected...'));
 
 app.use(express.json());
+app.use(helmet());
 
 app.use('/api/users',users);
 app.use('/api/issues',issues);
