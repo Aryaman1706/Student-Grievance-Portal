@@ -1,6 +1,9 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
+const config= require('config');
+const jwt=require('jsonwebtoken')
+
 const userSchema=new mongoose.Schema({
    username:{
        type: String,
@@ -23,8 +26,20 @@ const userSchema=new mongoose.Schema({
        type: String,
        required:true,
        minlength:10
+   },
+   isAdmin:{
+       type:Boolean,
+       default:false
    }
 });
+
+// generating auth token
+userSchema.methods.generateAuthToken=function()
+{
+    const token=jwt.sign({password:this.password,email:this.email},config.get('privateKey'));
+    return token;
+}
+
 
 const User= mongoose.model('User',userSchema);
 
