@@ -7,7 +7,7 @@ const issues=require('./routes/issues');
 const users=require('./routes/users');
 const auth = require('./routes/auth');
 
-mongoose.connect('mongodb://localhost/proto')
+mongoose.connect('mongodb://localhost/proto', { useUnifiedTopology: true, useNewUrlParser: true })
 .then(()=> console.log('Connected to MongoDB...'))
 .catch(err=> console.error('Not Connected...'));
 
