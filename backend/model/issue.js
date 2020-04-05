@@ -27,10 +27,14 @@ const issueSchema= new mongoose.Schema({
                 type: String,
                 required:true
             },
-            // email:{
-            //     type: String,
-            //     required:true
+            // _id:{
+            //     type: String
             // }
+
+            email:{
+                type: String,
+                required:true
+            }
         }),
         required:true
     }
@@ -41,7 +45,7 @@ const Issue=mongoose.model('Issue',issueSchema);
 function validateIssue(issue){
     const schema={
         category: Joi.string().min(6).required(),
-        userId: Joi.string().required(),
+        // userId: Joi.string().required(),
         statement: Joi.string().required(),
         subject: Joi.string().required()
 
