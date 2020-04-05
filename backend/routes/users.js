@@ -54,30 +54,34 @@ router.post('/',async(req,res)=>{
 });
 
 
-// not functional as of now
 
 // to edit the currently logged in user
-router.put('/me', async (req,res)=>{
+router.put('/me',auth,async (req,res)=>{
     const {error}= validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     
 
-    const user= await User.findByIdAndUpdate(req.params.id,{
+    const user= await User.findByIdAndUpdate(req.user._id,{
         username: req.body.username,
         email: req.body.email,
         phone: req.body.phone,
-        password: req.body.password
+        // password: req.body.password
     },{new:true});
 
-    if(!user) return res.status(404).send('Not Found');
+    // if(!user) return res.status(404).send('Not Found');
+
+    // bcrypt work
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(req.user.password, salt);
+
 
     res.send(user);
 
 });
 
 // to delete account (currently logined)
-router.delete('/me',async (req,res)=>{
-    const user=await User.findByIdAndRemove(req.params.id);
+router.delete('/me',auth,async (req,res)=>{
+    const user=await User.findByIdAndRemove(req.user._id);
     if(!user) return res.status(404).send('Not Found');
     res.send(user);
 });
