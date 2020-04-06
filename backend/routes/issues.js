@@ -8,29 +8,33 @@ const auth = require('../middleware/auth');
 
 const router=express.Router();
 
+// get all issues
 router.get('/',async (req,res)=>{
-    const issues= await Issue.find().sort('-date').limit(10);
+    const issues= await Issue.find().sort('-date').limit(50);
     res.send(issues);
 });
 
-router.get('/:id',auth,async (req,res)=>{
-    const issue = await Issue.findById(req.params.id);
-    if(!issue) return res.status(404).send('Not Found');
-    res.send(issue);
+// get issues posted by the currently logined user
+router.get('/myissues',auth,async (req,res)=>{
+    const issues = await Issue.find( { user_id:req.user._id } );
+    if(!issues) return res.status(404).send('Not Found');
+    res.send(issues);
 });
 
+// post issues by logined user 
 router.post('/',auth, async(req,res)=>{
     const {error}= validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     
     const user=await User.findById(req.user._id);
     if(!user) return res.status(400).send('Invalid User');
+
     let issue=new Issue({
         category: req.body.category,
         subject: req.body.subject,
         statement: req.body.statement,
+        user_id: req.user._id,
         user:{
-            // _id: user._id,
             username: user.username,
             email: user.email
         }
@@ -41,37 +45,48 @@ router.post('/',auth, async(req,res)=>{
     res.send(issue);
 });
 
-
-// NOT FUNCTIONAL AS OF NOW
-
-// Allowed to those who have posted the issue
-
-// router.put('/myissue',auth,async (req,res)=>{
-//     const {error}= validate(req.body);
-//     if(error) return res.status(400).send(error.details[0].message);
+// edit issue for only the user who put them
+router.put('/:id',auth,async (req,res)=>{
+    const {error}= validate(req.body);
+    if(error) return res.status(400).send(error.details[0].message);
     
-//     const user=await User.findById(req.user._id);
-//     if(!user) return res.status(400).send('Invalid User');
+    const user=await User.findById(req.user._id);
+    if(!user) return res.status(400).send('Invalid User');
 
-//     const issue= await Issue.findByIdAndUpdate(req.params.id,{
-//         category: req.body.category,
-//         subject: req.body.subject,
-//         statement: req.body.statement,
-//         user:{
-//             username: user.username
-//         }
-//     },{new:true});
+    let issue=await Issue.findById(req.params.id);
+    if(!issue) return res.status(404).send('Not Found');
+    
+    if(issue.user_id!=req.user._id){
+        return res.send("Unautherized.")
+    }
+    
+    issue= await Issue.findByIdAndUpdate(req.params.id,{
+        category: req.body.category,
+        subject: req.body.subject,
+        statement: req.body.statement,
+        user:{
+            username: user.username
+        }
+    },{new:true});
 
-//     if(!issue) return res.status(404).send('Not Found');
+    
 
-//     res.send(issue);
+    res.send(issue);
 
-// });
+});
 
-// router.delete('/myissue',auth,async (req,res)=>{
-//     const issue=await Issue.findByIdAndRemove(req.params.id);
-//     if(!issue) return res.status(404).send('Not Found');
-//     res.send(issue);
-// });
+// delete the issue
+router.delete('/:id',auth,async (req,res)=>{
+    
+    let issue=await Issue.findById(req.params.id);
+    if(!issue) return res.status(404).send('Not Found');
+    
+    if(issue.user_id!=req.user._id){
+        return res.send("Unautherized.")
+    }
+
+    issue=await Issue.findByIdAndRemove(req.params.id);
+    res.send(issue);
+});
 
 module.exports=router;

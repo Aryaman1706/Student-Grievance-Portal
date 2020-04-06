@@ -21,15 +21,19 @@ const issueSchema= new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    user_id:{
+        type:String,
+        required:true
+    },
     user:{
         type: new mongoose.Schema({
             username:{
                 type: String,
                 required:true
             },
-            // _id:{
-            //     type: String
-            // }
+            _id:{
+                type: String
+            },
 
             email:{
                 type: String,
