@@ -10,6 +10,7 @@ const auth = require('./routes/auth');
 mongoose.connect('mongodb://localhost/proto', { useUnifiedTopology: true, useNewUrlParser: true })
 .then(()=> console.log('Connected to MongoDB...'))
 .catch(err=> console.error('Not Connected...'));
+mongoose.set('useFindAndModify', false);
 
 app.use(express.json());
 
