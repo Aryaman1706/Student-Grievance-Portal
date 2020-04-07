@@ -18,5 +18,5 @@ app.use('/api/users',users);
 app.use('/api/issues',issues);
 app.use('/api/auth', auth);
 
-const port=process.env.PORT || 3000;
+const port=process.env.PORT || 4000;
 app.listen(port,()=> console.log(`Listening on Port ${port}...`));
