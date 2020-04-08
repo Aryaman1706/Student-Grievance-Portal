@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const auth = require('../middleware/auth');
+const config= require('config');
 
 const {User,validate}=require('../model/user');
 
@@ -25,7 +26,7 @@ router.get('/:id',auth,async(req,res)=>{
 router.post('/',async(req,res)=>{
     const {error}= validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
-
+//try{
     let user = await User.findOne({ email: req.body.email });
     if (user) return res.status(400).send('User already registered.');
 
@@ -43,14 +44,30 @@ router.post('/',async(req,res)=>{
     user.password = await bcrypt.hash(user.password, salt);
 
     user=await user.save();
+//     const payload={
+//         user:{
+//             id: user.id
+//         }
+//     }
+//     jwt.sign(payload, config.get('privateKey'),{
+//         expiresIn: 360000
+//     }, (err, token) =>{
+//         if(err) throw err;
+//         res.json({ token });
+
+//     } )
+//   } catch (err) {
+//       console.error(err.message);
+//       res.status(500).send('Server Error');
+//   }
 
     // jwt work
     const token = user.generateAuthToken();
     res
-    .header('x-auth-token', token)
-    .send(_.pick(user, ['_id', 'username', 'email', 'isAdmin']));
+    // .header('x-auth-token', token)
+    .send({body:_.pick(user, ['_id', 'username', 'email', 'isAdmin']),token});
     
-    // res.send(user);
+   // // res.send(user);
 });
 
 

@@ -1,11 +1,15 @@
 const express=require('express');
 const mongoose=require('mongoose');
 
+
 const app=express();
 
 const issues=require('./routes/issues');
 const users=require('./routes/users');
 const auth = require('./routes/auth');
+var cors = require('cors')
+
+app.use(cors()) 
 
 mongoose.connect('mongodb://localhost/proto', { useUnifiedTopology: true, useNewUrlParser: true })
 .then(()=> console.log('Connected to MongoDB...'))
