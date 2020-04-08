@@ -2,11 +2,12 @@ import React, { useContext,Fragment } from 'react';
 import {Link, NavLink, withRouter} from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 
-const Navbar= () =>{
+const Navbar= (props) =>{
  const authContext=useContext(AuthContext);
  const {isAuthenticated, logout, user} = authContext;
  const onLogout = () =>{
   logout();
+  props.history.push('/');
 }
 const authLinks = (
   <Fragment>

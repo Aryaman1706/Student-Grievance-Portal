@@ -26,7 +26,7 @@ const Register = (props) => {
     }
     const onSubmit = (e) =>{
         e.preventDefault();
-        console.log(user);
+        //console.log(user);
         if(username===''|| email===''|| password===''||phone===''){
             // setAlert('Please enter all details', 'danger')
         }

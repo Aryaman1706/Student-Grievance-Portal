@@ -13,7 +13,8 @@ const router=express.Router();
 // to get the currently logined user
 router.get('/me', auth, async (req, res) => {
     const user = await User.findById(req.user._id).select('-password');
-    res.send(user);
+     res.send(user);
+   
 });
 
 // to get some other user

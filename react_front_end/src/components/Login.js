@@ -8,7 +8,7 @@ const Login = (props)=> {
     const{ login, error, clearErrors, isAuthenticated} = authContext;
     const{setAlert}= AlertContext;
     useEffect(() =>{
-        if(isAuthenticated){
+        if(isAuthenticated===true){
             props.history.push('/');  //Redirecting the page to home page if authenticated
         }
         if(error=== 'Invalid email or password.'){

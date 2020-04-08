@@ -1,52 +1,75 @@
-import React, { Component, Fragment } from 'react'
+import React, { useContext,Fragment, useState, useEffect } from 'react';
+import AuthContext from '../context/AuthContext';
+import SetAuthToken from '../utils/SetAuthToken';
+if(localStorage.token){
+    SetAuthToken(localStorage.token);
+  }
 
-class Profile extends Component {
-    state={
-        name:'Lorem',
-        email:'Lorem@gmail.com',
-        phno:'1234567890',
+const Profile = (props) =>{
+    const authContext= useContext(AuthContext);
+    const {isAuthenticated, logout, user,loadUser} = authContext;
+    loadUser();
+    console.log(user);
+    const[profile,setProfile]=useState({
+        username: `Lorem`,
+               email: `lorem@gmail.com`,
+               phone: '1234567890',
         password:'1234567890',
         Confirm:'1234567890'
-
-    }
-    onChange = (e) =>{
-        this.setState({
+    })
+    const{username,email,phone,password,Confirm}=profile;
+    useEffect(()=>{
+        if(user){
+            setProfile({
+               ...profile ,
+               username: `${user.username}`,
+               email: `${user.email}`,
+               phone: `${user.phone}`
+            })
+        }
+    },user)
+    const onChange = (e) =>{
+        setProfile({
             [e.target.id]: e.target.value
         })
     }
-    onSubmit = (e) =>{
+   const onSubmit = (e) =>{
         e.preventDefault();
-        console.log(this.state);
+        // update({
+        //   username,
+        //   email,
+        //     password,
+        //     phone
+        // });
     }
-    render() {
-        const {name,email,phno,password,Confirm}= this.state;
+
         return (
             
             <Fragment>
             <div className="container">
                 <div className="row">
              <h1 className="center-align">Profile</h1>
-            <form className="col s12" onSubmit={this.onSubmit}>
+            <form className="col s12" onSubmit={onSubmit}>
               <div className="row">
                 <div className="col s8 offset-s2">
                 <label htmlFor="name">Name:</label>
-                  <input value={name} id="name" type="text" className="validate" onChange={this.onChange}/>
+                  <input value={username} id="username" type="text" className="validate" onChange={onChange} required/>
                   </div>
                   <div className="col s8 offset-s2">
                     <label htmlFor="name">Email:</label>
-                    <input value={email} id="email" type="email" className="validate" onChange={this.onChange}/>
+                    <input value={email} id="email" type="email" className="validate" onChange={onChange} required/>
                     </div>
                     <div className="col s8 offset-s2">
                     <label htmlFor="name">Phone Number:</label>
-                    <input value={phno} id="phno" type="tel" className="validate" onChange={this.onChange}/>
+                    <input value={phone} id="phone" type="tel" className="validate" onChange={onChange} required/>
                     </div>
                     <div className="col s8 offset-s2">
                     <label htmlFor="name">Password:</label>
-                    <input value={password} id="password" type="password" className="validate" onChange={this.onChange}/>
+                    <input value={password} id="password" type="password" className="validate" onChange={onChange} required/>
                     </div>
                     <div className="col s8 offset-s2">
                     <label htmlFor="name">Confirm Password:</label>
-                    <input value={Confirm} id="Confirm" type="password" className="validate" onChange={this.onChange}/>
+                    <input value={Confirm} id="Confirm" type="password" className="validate" onChange={onChange} required/>
                     </div>
                     <div className="col s8 offset-s2" style={{marginTop: '10px'}}>
                     <button className="btn waves-effect waves-light" type="submit" name="action">Save Changes
@@ -61,6 +84,6 @@ class Profile extends Component {
                     </Fragment>
         )
     }
-}
+
 
 export default Profile

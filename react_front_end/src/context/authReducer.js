@@ -9,6 +9,7 @@ import {REGISTER_SUCCESS,
 
     export default (state,action) => {
         switch(action.type){
+            case LOGIN_SUCCESS:
             case REGISTER_SUCCESS:
                 localStorage.setItem('token', action.payload.token);
                 return{
@@ -50,14 +51,6 @@ import {REGISTER_SUCCESS,
                     loading: false,
                     user: null,
                     error: action.payload
-                }
-            case LOGIN_SUCCESS:
-                localStorage.setItem('token', action.payload);
-                return{
-                    ...state,
-                    ...action.payload,
-                    isAuthenticated: true,
-                    loading: false
                 }
             default:
                 return state;
