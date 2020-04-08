@@ -14,6 +14,19 @@ router.get('/',async (req,res)=>{
     res.send(issues);
 });
 
+// get a particular issue by id
+router.get('/',async(req,res)=>{
+    const issue=await Issue.findById(req.params.id);
+    res.send(issue);
+})
+
+// filter issues for a particular category
+// how to use:- send a get request to /filter/?category=Academics/Others/Services ( any one of categories )
+router.get('/filter/?',async (req,res)=>{
+    const issues = await Issue.find({category:req.query.category}).sort('-date').limit(30);
+    res.send(issues);
+})
+
 // get issues posted by the currently logined user
 router.get('/myissues',auth,async (req,res)=>{
     const issues = await Issue.find( { user_id:req.user._id } );
