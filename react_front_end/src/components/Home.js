@@ -8,7 +8,7 @@ class Home extends Component{
         posts: [ ]
     }
     componentDidMount(){
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('http://localhost:4000/api/issues')
         .then(res => {                          //fires up only after the data is fetched
             console.log(res);
             this.setState({
@@ -25,16 +25,15 @@ render(){
             <div className="col s12">
               <div className="card #f4511e deep-orange darken-1">
                 <div className="card-content white-text">
-                  <span className="card-title">{post.title}</span>
-                  <p>{post.body}</p>
+                  <span className="card-title">{post.category}</span>
+                  <p>{post.subject}</p>
                 </div>
                 <div className="card-action">
                    <Popup modal trigger={<a className="pointer">Read more...</a>}>
                    {close=>(
                         <div><a onClick={close}><i className=" modal-close material-icons right pointer" >clear </i></a> 
-                        <h4 id="category">Academics</h4>
-                          <p id="statement">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste culpa eveniet tempora sequi velit asperiores 
-                              blanditiis libero dignissimos voluptas sint ad, accusamus officiis itaque minima, cumque molestias odio unde eum.</p>
+                        <h4 id="subject">{post.subject}</h4>
+                          <p id="statement">{post.statement}</p>
                        
                         <div className="modal-footer">
                           <a href="#!" className="modal-close btn-flat green right">Upvote<i className="material-icons right">arrow_upward</i></a>
