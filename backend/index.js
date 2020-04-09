@@ -11,7 +11,7 @@ var cors = require('cors')
 
 app.use(cors()) 
 
-mongoose.connect('mongodb://localhost/proto', { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect('mongodb+srv://aryaman:aryaman@cluster0-4rsvl.mongodb.net/test?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
 .then(()=> console.log('Connected to MongoDB...'))
 .catch(err=> console.error('Not Connected...'));
 mongoose.set('useFindAndModify', false);
