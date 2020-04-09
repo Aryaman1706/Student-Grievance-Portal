@@ -40,10 +40,10 @@ return(
         <li><a href="#!">Input</a></li>
       </ul>
       <ul id="filter" className="dropdown-content">
-        <li><a href="#!">Academics</a></li>
-        <li><a href="#!">Infra</a></li>
-        <li><a href="#!">Services</a></li>
-        <li><a href="#!">Others</a></li>
+        <li><Link to='/academics'>Academics</Link></li>
+        <li><Link to='/infrastructure'>Infra</Link></li>
+        <li><Link to='/services'>Services</Link></li>
+        <li><Link to='/others'>Others</Link></li>
       </ul>
       <ul id="profile" className="dropdown-content">
       {isAuthenticated ? authLinks : guestLinks}

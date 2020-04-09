@@ -10,6 +10,10 @@ import AuthState from './context/AuthState';
 import SetAuthToken from './utils/SetAuthToken';
 import AlertState from './context/AlertState';
 import Alert from './components/Alert';
+import AcademicFilter from './components/AcademicFilter';
+import InfraFilter from './components/InfraFilter';
+import ServicesFilter from './components/ServicesFilter';
+import OthersFilter from './components/OthersFilter';
 
 if(localStorage.token){
   SetAuthToken(localStorage.token);
@@ -31,6 +35,10 @@ class App extends Component{
         <Route exact path='/add' component={Add} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
+        <Route exact path='/academics' component={AcademicFilter} />
+        <Route exact path='/infrastructure' component={InfraFilter} />
+        <Route exact path='/services' component={ServicesFilter} />
+        <Route exact path='/others' component={OthersFilter} />
         </Switch>
         
       </div>

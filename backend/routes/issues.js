@@ -9,20 +9,20 @@ const auth = require('../middleware/auth');
 const router=express.Router();
 
 // get all issues
-router.get('/',async (req,res)=>{
+router.get('/all',async (req,res)=>{
     const issues= await Issue.find().sort('-date').limit(50);
     res.send(issues);
 });
 
 // get a particular issue by id
-router.get('/',async(req,res)=>{
+router.get('/:id',async(req,res)=>{
     const issue=await Issue.findById(req.params.id);
     res.send(issue);
 })
 
 // filter issues for a particular category
-// how to use:- send a get request to /filter/?category=Academics/Others/Services ( any one of categories )
-router.get('/filter/?',async (req,res)=>{
+// how to use:- send a get request to /?category=Academics/Others/Services ( any one of categories )
+router.get('/',async (req,res)=>{
     const issues = await Issue.find({category:req.query.category}).sort('-date').limit(30);
     res.send(issues);
 })

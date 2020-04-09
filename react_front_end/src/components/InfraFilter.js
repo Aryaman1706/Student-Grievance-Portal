@@ -3,13 +3,13 @@ import axios from 'axios';
 import Popup from "reactjs-popup";
 import { Link } from 'react-router-dom';
 
-class Home extends Component{
+class InfraFilter extends Component{
     state={
         posts: [ ]
     }
    async componentDidMount(){
       
-       const res=await axios.get('http://localhost:4000/api/issues/all')
+       const res=await axios.get('http://localhost:4000/api/issues/?category=Infrastructure')
                              //fires up only after the data is fetched
             console.log(res);
             this.setState({
@@ -80,4 +80,4 @@ render(){
     )
 }
 }
-export default Home;
+export default InfraFilter;
