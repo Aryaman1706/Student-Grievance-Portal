@@ -67,8 +67,8 @@ if(isAuthenticated!==true){
                 </div>
 
                 <div className="form-group">
-                <label htmlFor="files">Attach Files (optional):-</label>
-                <input type="file" className="form-control-file" id="files"/>
+                {/* <label htmlFor="files">Attach Files (optional):-</label>
+                <input type="file" className="form-control-file" id="files"/> */}
                 </div>
 
                 <br/>

@@ -76,4 +76,4 @@ return(
 </div>
 )
 }
-export default Navbar;
+export default withRouter(Navbar);
