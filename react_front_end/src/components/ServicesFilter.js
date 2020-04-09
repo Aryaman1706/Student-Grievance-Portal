@@ -35,7 +35,7 @@ render(){
                         <div><a onClick={close}><i className=" modal-close material-icons right pointer" >clear </i></a> 
                         <h4 id="subject">{post.subject}</h4>
                           <p id="statement">{post.statement}</p>
-                       
+                          <h6 className='left'>Posted by: {post.user.email}</h6>
                         <div className="modal-footer">
                           <a href="#!" className="modal-close btn-flat green right">Upvote<i className="material-icons right">arrow_upward</i></a>
                           <a href="#!" className="modal-close btn-flat red right">Downvote<i className="material-icons right">arrow_downward</i></a>
