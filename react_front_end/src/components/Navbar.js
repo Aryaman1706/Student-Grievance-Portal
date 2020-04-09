@@ -31,6 +31,7 @@ const guestLinks = (
 ) 
 
 return(
+    <div className='navbar-fixed'>
     <nav>
     <div>
   <ul id="sort" className="dropdown-content">
@@ -72,7 +73,7 @@ return(
     </ul>
   </div>
 </nav>
-
+</div>
 )
 }
 export default Navbar;
