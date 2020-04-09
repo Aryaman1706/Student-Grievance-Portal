@@ -7,9 +7,9 @@ if(localStorage.token){
 
 const Profile = (props) =>{
     const authContext= useContext(AuthContext);
-    const {isAuthenticated, logout, user,loadUser} = authContext;
+    const {isAuthenticated, logout, user,loadUser,update} = authContext;
     loadUser();
-    console.log(user);
+   // console.log(user);
     const[profile,setProfile]=useState({
         username: `Lorem`,
                email: `lorem@gmail.com`,
@@ -27,20 +27,22 @@ const Profile = (props) =>{
                phone: `${user.phone}`
             })
         }
-    },user)
+    },user,profile)
     const onChange = (e) =>{
         setProfile({
+            ...profile,
             [e.target.id]: e.target.value
         })
     }
    const onSubmit = (e) =>{
         e.preventDefault();
-        // update({
-        //   username,
-        //   email,
-        //     password,
-        //     phone
-        // });
+        update({
+          username,
+          email,
+            password,
+            phone
+        });
+        props.history.push('/');
     }
 
         return (

@@ -9,7 +9,9 @@ import {REGISTER_SUCCESS,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    CLEAR_ERRORS} from './types';
+    CLEAR_ERRORS,
+UPDATE_SUCCESS,
+UPDATE_FAIL} from './types';
 import setAuthToken from '../utils/SetAuthToken';
 
 
@@ -89,6 +91,29 @@ const AuthState = (props) =>{
             })
         }
     }
+    //Update User
+    const update = async formData =>{
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try{
+            const res = await axios.put('http://localhost:4000/api/users/me', formData, config);
+            // console.log(res.data.token);
+            dispatch({
+                type: UPDATE_SUCCESS,
+                payload: res.data
+            })
+            // console.log(localStorage.token);
+            loadUser();
+        } catch(err){
+            dispatch({
+                type: UPDATE_FAIL,
+              payload: err.response.data.msg
+            })
+        }
+    }
 
     //Logout
     const logout = () => dispatch({type:LOGOUT })
@@ -108,7 +133,8 @@ const AuthState = (props) =>{
             clearErrors,
             loadUser,
             logout,
-            login
+            login,
+            update
 
          }}>
             {props.children}

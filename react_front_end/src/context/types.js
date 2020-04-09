@@ -21,3 +21,5 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const ADD_ISSUE = 'ADD_ISSUE'; 
 export const ISSUE_FAIL = 'ISSUE_FAIL';
 export const RESET = 'RESET';
+export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
+export const UPDATE_FAIL = 'UPDATE_FAIL'; 
