@@ -18,3 +18,6 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const ADD_ISSUE = 'ADD_ISSUE'; 
+export const ISSUE_FAIL = 'ISSUE_FAIL';
+export const RESET = 'RESET';

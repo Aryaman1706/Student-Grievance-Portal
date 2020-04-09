@@ -14,6 +14,7 @@ import AcademicFilter from './components/AcademicFilter';
 import InfraFilter from './components/InfraFilter';
 import ServicesFilter from './components/ServicesFilter';
 import OthersFilter from './components/OthersFilter';
+import IssueState from './context/IssueState';
 
 if(localStorage.token){
   SetAuthToken(localStorage.token);
@@ -24,6 +25,7 @@ class App extends Component{
   render(){
     return(
       <AuthState>
+      <IssueState>
       <AlertState>
       <BrowserRouter>
       <div className="App">
@@ -44,6 +46,7 @@ class App extends Component{
       </div>
       </BrowserRouter>
       </AlertState>
+      </IssueState>
       </AuthState>
     )
   }
