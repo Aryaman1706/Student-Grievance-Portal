@@ -1,18 +1,20 @@
 import React, { Component} from 'react';
 import axios from 'axios';
 import Popup from "reactjs-popup";
+import { Link } from 'react-router-dom';
 
-class Home extends Component{
+class ServicesFilter extends Component{
     state={
         posts: [ ]
     }
-    componentDidMount(){
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-        .then(res => {                          //fires up only after the data is fetched
+   async componentDidMount(){
+      
+       const res=await axios.get('/api/issues/?category=Services')
+                             //fires up only after the data is fetched
             console.log(res);
             this.setState({
                 posts: res.data       
-            })
+           
         })
         
     }
@@ -24,17 +26,16 @@ render(){
             <div className="col s12">
               <div className="card #f4511e deep-orange darken-1">
                 <div className="card-content white-text">
-                  <span className="card-title">{post.title}</span>
-                  <p>{post.body}</p>
+                  <span className="card-title">{post.category}</span>
+                  <p>{post.subject}</p>
                 </div>
                 <div className="card-action">
                    <Popup modal trigger={<a className="pointer">Read more...</a>}>
                    {close=>(
                         <div><a onClick={close}><i className=" modal-close material-icons right pointer" >clear </i></a> 
-                        <h4 id="category">Academics</h4>
-                          <p id="statement">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste culpa eveniet tempora sequi velit asperiores 
-                              blanditiis libero dignissimos voluptas sint ad, accusamus officiis itaque minima, cumque molestias odio unde eum.</p>
-                       
+                        <h4 id="subject">{post.subject}</h4>
+                          <p id="statement">{post.statement}</p>
+                          <h6 className='left'>Posted by: {post.user.email}</h6>
                         <div className="modal-footer">
                           <a href="#!" className="modal-close btn-flat green right">Upvote<i className="material-icons right">arrow_upward</i></a>
                           <a href="#!" className="modal-close btn-flat red right">Downvote<i className="material-icons right">arrow_downward</i></a>
@@ -70,13 +71,13 @@ render(){
         <br/>
         {postList}
         <div className="fixed-action-btn">
-        <a className="btn-floating btn-large red waves-effect hoverable">
+        <Link to='/add' className="btn-floating btn-large red waves-effect hoverable">
           <i className="large material-icons">add</i>
-        </a>
+        </Link>
       </div>
             </div>
             
     )
 }
 }
-export default Home;
+export default ServicesFilter;
