@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const auth = require('../middleware/auth');
 const config= require('config');
+const passwordComplexity = require('joi-password-complexity');
 
 const {User,validate}=require('../model/user');
 
@@ -14,7 +15,7 @@ const router=express.Router();
 router.get('/me', auth, async (req, res) => {
     const user = await User.findById(req.user._id).select('-password');
      res.send(user);
-   
+
 });
 
 // to get some other user
@@ -28,6 +29,10 @@ router.post('/',async(req,res)=>{
     const {error}= validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 //try{
+
+    const pass_err= passwordComplexity().validate(req.body.password);
+    if(pass_err.error) return res.status(400).send(pass_err.error.details[0].message);
+
     let user = await User.findOne({ email: req.body.email });
     if (user) return res.status(400).send('User already registered.');
 
@@ -67,7 +72,7 @@ router.post('/',async(req,res)=>{
     res
     // .header('x-auth-token', token)
     .send({body:_.pick(user, ['_id', 'username', 'email', 'isAdmin']),token});
-    
+
    // // res.send(user);
 });
 
@@ -77,7 +82,7 @@ router.post('/',async(req,res)=>{
 router.put('/me',auth,async (req,res)=>{
     const {error}= validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
-    
+
 
     const user= await User.findByIdAndUpdate(req.user._id,{
         username: req.body.username,
